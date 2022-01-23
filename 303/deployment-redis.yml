@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis_dev
+  labels:
+    app: redis-dev
+    tier: devops
+spec:
+  selector:
+    matchLabels:
+      app: redis-dev
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis-dev
+    spec:
+      containers:
+        - name: redis-dev
+          image: redis:alpine
+          ports:
+            - containerPort: 6379
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi

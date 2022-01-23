@@ -1,0 +1,33 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: devapp303
+  labels:
+    app: devapp303
+    tier: devops
+spec:
+  selector:
+    matchLabels:
+      app: devapp303
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: devapp303
+    spec:
+      containers:
+        - name: devapp303
+          image: docker.io/library/devops_303
+          imagePullPolicy: Never
+          envFrom:
+            - configMapRef:
+                name: devopsconfmap.yml
+          ports:
+            - containerPort: 8884
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi

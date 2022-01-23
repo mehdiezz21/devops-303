@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: devopsconfmap
+  namespace: quota-mem-devops303
+data:
+  REDIS_PORT: "6379"
+  REDIS_HOST: "service-redis"

@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: serv-app
+spec:
+  selector:
+    app: devapp303
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8884
